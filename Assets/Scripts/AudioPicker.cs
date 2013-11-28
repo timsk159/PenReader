@@ -54,9 +54,12 @@ public class AudioPicker
 		return penSounds[randomIndex];
 	}
 
-	public void PlaySound(PenSound sound)
+	public void PlaySound()
 	{
-		audioSource.PlayOneShot(sound.audioClip);
+		if(audioSource.clip != lastPickedSound.audioClip)
+			audioSource.clip = lastPickedSound.audioClip;
+		audioSource.Play();
+		//audioSource.PlayOneShot(sound.audioClip);
 	}
 
 	void CacheCategories()

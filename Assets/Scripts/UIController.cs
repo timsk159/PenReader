@@ -18,8 +18,6 @@ public class UIController : MonoBehaviour
 
 	AudioPicker audioPicker;
 
-	PenSound pickedSound;
-
 	UIView uiView;
 
 	void Start()
@@ -55,17 +53,17 @@ public class UIController : MonoBehaviour
 
 	void CategorySelected(AudioCategory category)
 	{
-		pickedSound = audioPicker.PickPenSound(category);
+		audioPicker.PickPenSound(category);
 	}
 
 	void CategoryBack()
 	{
-		pickedSound = null;
+		AudioPicker.lastPickedSound = null;
 	}
 
 	void GuessBack()
 	{
-		pickedSound = null;
+		AudioPicker.lastPickedSound = null;
 	}
 
 	void GuessSubmitted(string guess)
@@ -89,18 +87,18 @@ public class UIController : MonoBehaviour
 
 	void NewSoundYes()
 	{
-		var previousCategory = pickedSound.audioCategory;
-		pickedSound = audioPicker.PickPenSound(previousCategory);
+		var previousCategory = AudioPicker.lastPickedSound.audioCategory;
+		audioPicker.PickPenSound(previousCategory);
 	}
 
 	void WinExit()
 	{
-		pickedSound = null;
+		AudioPicker.lastPickedSound = null;
 	}
 
 	void PlaySound()
 	{
-		audioPicker.PlaySound(pickedSound);
+		audioPicker.PlaySound();
 	}
 }
 

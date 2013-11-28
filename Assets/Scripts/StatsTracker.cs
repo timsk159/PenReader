@@ -40,4 +40,12 @@ public class StatsTracker
 		_currentStreak = PlayerPrefs.GetInt("CurrentStreak", 0);
 		bestStreak = PlayerPrefs.GetInt("BestStreak", 0);
 	}
+
+	public static void ResetStats()
+	{
+		_currentStreak = 0;
+		bestStreak = 0;
+		PlayerPrefs.SetInt("CurrentStreak", 0);
+		PlayerPrefs.SetInt("BestStreak", 0);
+	}
 }

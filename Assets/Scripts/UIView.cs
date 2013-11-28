@@ -10,6 +10,8 @@ public class UIView : MonoBehaviour
 	public UIPanel guessPanel;
 	public UIPanel revealWinPanel;
 	public UIPanel revealLosePanel;
+	public UISprite winSprite;
+	public UISprite loseSprite;
 
 	public UIPopupList guessSelectionPopUp;
 
@@ -95,10 +97,12 @@ public class UIView : MonoBehaviour
 		if(GuessChecker.CheckGuess(guess))
 		{
 			GoToPanel(revealWinPanel);
+			winSprite.spriteName = AudioPicker.lastPickedSound.character;
 		}
 		else
 		{
 			GoToPanel(revealLosePanel);
+			loseSprite.spriteName = AudioPicker.lastPickedSound.character;
 		}
 	}
 
