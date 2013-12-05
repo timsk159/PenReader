@@ -54,7 +54,7 @@ public class UIImageButton : MonoBehaviour
 			{
 				target.spriteName = disabledSprite;
 			}	
-			target.MakePixelPerfect();
+		//	target.MakePixelPerfect();
 		}
 	}
 
@@ -63,7 +63,7 @@ public class UIImageButton : MonoBehaviour
 		if (isEnabled && target != null)
 		{
 			target.spriteName = isOver ? hoverSprite : normalSprite;
-			target.MakePixelPerfect();
+		//	target.MakePixelPerfect();
 		}
 	}
 
@@ -72,7 +72,7 @@ public class UIImageButton : MonoBehaviour
 		if (pressed)
 		{
 			target.spriteName = pressedSprite;
-			target.MakePixelPerfect();
+			//target.MakePixelPerfect();
 		}
 		else UpdateImage();
 	}
