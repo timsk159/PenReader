@@ -74,10 +74,20 @@ public class UIController : MonoBehaviour
 		}
 		else
 		{
+			StartCoroutine(FailCountdown());
 			StatsTracker.ResetCurrentStreak();
 		}
 		uiView.UpdateStats();
 		StatsTracker.SaveStats();
+	}
+
+	IEnumerator FailCountdown()
+	{
+		float countDownTime = 1.0f;
+
+		yield return new WaitForSeconds(countDownTime);
+
+		Messenger.Invoke(UIMessage.StartPress.ToString());
 	}
 
 	void NewSoundNo()
