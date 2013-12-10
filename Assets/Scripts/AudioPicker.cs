@@ -42,12 +42,16 @@ public class AudioPicker
 		{
 			randomIndex = Random.Range(0, cachedLetters.Length);
 			lastPickedSound = cachedLetters[randomIndex];
+			Debug.Log("Picked pen sound: " + lastPickedSound.audioClip.name);
+
 			return cachedLetters[randomIndex];
 		}
 		else
 		{
 			randomIndex = Random.Range(0, cachedNumbers.Length);
 			lastPickedSound = cachedNumbers[randomIndex];
+			Debug.Log("Picked pen sound: " + lastPickedSound.audioClip.name);
+
 			return cachedNumbers[randomIndex];
 		}
 	}
@@ -57,15 +61,16 @@ public class AudioPicker
 		int randomIndex = Random.Range(0, penSounds.Length);
 
 		lastPickedSound = penSounds[randomIndex];
+		Debug.Log("Picked pen sound: " + lastPickedSound);
 		return penSounds[randomIndex];
 	}
 
 	public void PlaySound()
 	{
+		Debug.Log("Playing sound: " + lastPickedSound.audioClip.name);
 		if(audioSource.clip != lastPickedSound.audioClip)
 			audioSource.clip = lastPickedSound.audioClip;
 		audioSource.Play();
-		//audioSource.PlayOneShot(sound.audioClip);
 	}
 
 	void CacheCategories()
