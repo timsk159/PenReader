@@ -13,9 +13,6 @@ public enum UIMessage
 
 public class UIController : MonoBehaviour 
 {
-	//Inspector-Set:
-	public PenSound[] penSounds;
-
 	AudioPicker audioPicker;
 
 	UIView uiView;
@@ -26,7 +23,7 @@ public class UIController : MonoBehaviour
 
 		audioPicker = new AudioPicker();
 
-		audioPicker.Init(penSounds, gameObject.GetComponent<AudioSource>());
+		audioPicker.Init(gameObject.GetComponent<AudioSource>());
 
 		uiView = GameObject.Find("UIView").GetComponent<UIView>();
 

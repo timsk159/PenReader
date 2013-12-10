@@ -10,6 +10,12 @@ public enum AudioCategory
 
 public class AudioPicker 
 {
+	private string[] numbersSelection = {"1","2","3","4","5","6","7","8","9"};
+	private string[] lettersSelection = 
+	{
+		"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
+	};
+
 	PenSound[] penSounds;
 	AudioSource audioSource;
 
@@ -18,10 +24,10 @@ public class AudioPicker
 
 	public static PenSound lastPickedSound;
 
-	public void Init(PenSound[] penSounds, AudioSource audios)
+	public void Init(AudioSource audios)
 	{
-		this.penSounds = penSounds;
 		this.audioSource = audios;
+		penSounds = LoadAudioAssets().ToArray();
 		CacheCategories();
 		Random.seed = Random.Range(1, 10000);
 	}
@@ -68,6 +74,28 @@ public class AudioPicker
 
 		cachedLetters = soundList.Where(ps => ps.audioCategory == AudioCategory.Letter).ToArray();
 		cachedNumbers = soundList.Where(ps => ps.audioCategory == AudioCategory.Number).ToArray();
+	}
+
+	List<PenSound> LoadAudioAssets()
+	{
+		List<PenSound> returnList = new List<PenSound>();
+		var lettersPath = "Audio/Letters/";
+		var numbersPath = "Audio/Numbers/";
+
+		for(int i = 0; i < lettersSelection.Length; i++)
+		{
+			var audioCli = (AudioClip)Resources.Load(lettersPath + lettersSelection[i]);
+
+			returnList.Add (new PenSound (AudioCategory.Letter, audioCli, lettersSelection [i]));
+		}
+
+		for(int i = 0; i < numbersSelection.Length; i++)
+		{
+			var audioCli = (AudioClip)Resources.Load(numbersPath + numbersSelection[i]);
+
+			returnList.Add (new PenSound (AudioCategory.Number, audioCli, numbersSelection [i]));
+		}
+		return returnList;
 	}
 }
 
