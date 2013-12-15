@@ -89,14 +89,14 @@ public class AudioPicker
 
 		for(int i = 0; i < lettersSelection.Length; i++)
 		{
-			var audioCli = (AudioClip)Resources.Load(lettersPath + lettersSelection[i]);
-
+			var audioCli = (AudioClip)Resources.Load(lettersPath + lettersSelection[i].ToLower());
 			returnList.Add (new PenSound (AudioCategory.Letter, audioCli, lettersSelection [i]));
 		}
 
 		for(int i = 0; i < numbersSelection.Length; i++)
 		{
 			var audioCli = (AudioClip)Resources.Load(numbersPath + numbersSelection[i]);
+			Debug.Log("Loading asset fromL " + numbersPath + numbersSelection[i]);
 
 			returnList.Add (new PenSound (AudioCategory.Number, audioCli, numbersSelection [i]));
 		}
